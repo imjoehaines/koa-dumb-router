@@ -6,7 +6,10 @@
   "dependencies": {
     "koa": "^1.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ava": "^0.8.0",
+    "chance": "^0.8.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
