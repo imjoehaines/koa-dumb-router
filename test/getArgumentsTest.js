@@ -3,8 +3,6 @@
 import test from 'ava'
 
 const getArguments = require('../lib/getArguments')
-const Chance = require('chance')
-const chance = new Chance()
 let route = '/user/:id'
 
 test('it doesn\'t spit out a name with a slash', t => {
