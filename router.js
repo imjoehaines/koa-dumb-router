@@ -1,18 +1,7 @@
 'use strict'
 
 const urlMatches = require('./lib/urlMatches')
-
-function getArguments (url, route) {
-  const routeSections = route.split('/')
-  const urlSections = url.split('/')
-
-  let args = []
-  routeSections.forEach((section, index) => {
-    section.startsWith(':') && args.push(urlSections[index])
-  })
-
-  return args
-}
+const getArguments = require('./lib/getArguments')
 
 module.exports = function (route, handler) {
   return function * (next) {
