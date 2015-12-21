@@ -32,6 +32,6 @@ test(`it spits out a name with an underscore`, t => {
 
 test('it returns placeholders from random strings', t => {
   const { url, route } = randomUrlsWithPlaceholders()
-  let i = (route.match(/:placeholder/g)).length
-  t.is(getArguments(url, route).length, i)
+  const numberOfPlaceholders = (route.match(/:placeholder/g)).length
+  t.is(getArguments(url, route).length, numberOfPlaceholders)
 })
