@@ -12,24 +12,24 @@ test('it matches the root url', t => {
 
 test('it matches two identical urls', t => {
   // make a random url and remove http://
-  let url = chance.url({domain: 'abc'})
+  let url = chance.url({ domain: 'abc' })
   url = url.replace('http://', '')
 
   t.true(urlMatches(url, url))
 })
 
 test(`it doesn't match two different urls`, t => {
-  let url = chance.url({domain: 'abc'})
+  let url = chance.url({ domain: 'abc' })
   url = url.replace('http://', '')
 
-  let route = chance.url({domain: 'abc'})
+  let route = chance.url({ domain: 'abc' })
   route = route.replace('http://', '')
 
   t.false(urlMatches(url, route))
 })
 
 test(`it doesn't match different urls with the same length`, t => {
-  const count = chance.integer({min: 2, max: 30})
+  const count = chance.integer({ min: 2, max: 30 })
   const url = chance.n(chance.word, count).join('/')
   const route = chance.n(chance.word, count).join('/')
 
@@ -44,12 +44,8 @@ test('it matches urls with placeholders', t => {
 })
 
 test('it matches random urls with placeholders', t => {
-  const count = chance.integer({min: 2, max: 30})
-  const url = chance.n(chance.word, count)
+  const randomUrlsWithPlaceholders = require('../lib/randomUrlsWithPlaceholders.js')
+  const { url, route } = randomUrlsWithPlaceholders()
 
-  const route = url.map((word, index) => {
-    return Math.round(Math.random()) === 1 && word || ':placeholder'
-  })
-
-  t.true(urlMatches(url.join('/'), route.join('/')))
+  t.true(urlMatches(url, route))
 })
