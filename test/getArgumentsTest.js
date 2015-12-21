@@ -3,6 +3,7 @@
 import test from 'ava'
 
 const getArguments = require('../lib/getArguments')
+const randomUrlsWithPlaceholders = require('../lib/randomUrlsWithPlaceholders')
 let route = '/user/:id'
 
 test('it doesn\'t spit out a name with a slash', t => {
@@ -30,7 +31,6 @@ test(`it spits out a name with an underscore`, t => {
 })
 
 test('it returns placeholders from random strings', t => {
-  const randomUrlsWithPlaceholders = require('../lib/randomUrlsWithPlaceholders.js')
   const { url, route } = randomUrlsWithPlaceholders()
   let i = (route.match(/:placeholder/g)).length
   t.is(getArguments(url, route).length, i)
