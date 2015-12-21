@@ -3,6 +3,7 @@
 import test from 'ava'
 
 const urlMatches = require('../lib/urlMatches')
+const randomUrlsWithPlaceholders = require('../lib/randomUrlsWithPlaceholders')
 const Chance = require('chance')
 const chance = new Chance()
 
@@ -44,7 +45,6 @@ test('it matches urls with placeholders', t => {
 })
 
 test('it matches random urls with placeholders', t => {
-  const randomUrlsWithPlaceholders = require('../lib/randomUrlsWithPlaceholders.js')
   const { url, route } = randomUrlsWithPlaceholders()
 
   t.true(urlMatches(url, route))
